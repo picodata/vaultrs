@@ -34,7 +34,7 @@ pub enum ClientError {
     ResponseWrapError,
     #[error("Error configuring REST client")]
     RestClientBuildError { source: reqwest::Error },
-    #[error("An error occurred with the request")]
+    #[error("An error occurred with the request: {}", .source)]
     RestClientError {
         #[from]
         source: rustify::errors::ClientError,
